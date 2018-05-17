@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="notice">
+  	<select id="getNotice" resultType="noticeVO" parameterType="String">
+  		select * from notice where NO_ST = 'Y'
+  	</select> 
+
+  	<insert id="insertNotice" parameterType="noticeVO">
+  		insert into notice values (no_seq.nextval, #{no_mem_id}, #{no_name}, 'Y', sysdate)
+  	</insert>
+  	
+  	<update id="updaetNotice" parameterType="noticeVO">
+  		update notice set NO_ST = #{no_st} where NO_SEQ = #{no_seq}
+  	</update>
+  </mapper>
