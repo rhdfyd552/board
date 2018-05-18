@@ -34,14 +34,14 @@
     <script>
     	$(function(){
     		var mem_id = $("#mem_id").val();
-    		/* if(mem_id==null || mem_id==''){
+    		if(mem_id==null || mem_id==''){
     			if(mem_id != $("board tr").find("td:eq(2)").text()){
     				$('#modifyBoard').hide();
     				$('#deleteBoard').hide();
     			}else{
     				$('#replyBoard').hide();
     			}
-    		} */
+    		} 
     		$('#modifyBoard').click(function(){
     			//method : get-조회할 때 , post-서버상의 변경이 일어날 때
     			$('#frm').attr('action','${pageContext.request.contextPath}/modifyBoard');
@@ -97,6 +97,7 @@
 				<form id="frm"class="form-horizontal" role="form" method="get">
 				<div>
 					<input type="hidden" id="board_seq" name="board_seq" value="${boardVO.board_seq }">
+					
 				</div>
 					
 					<div class="content">

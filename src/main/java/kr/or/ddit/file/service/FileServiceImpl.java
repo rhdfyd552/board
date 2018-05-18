@@ -6,22 +6,25 @@ import kr.or.ddit.board.dao.BoardDaoImpl;
 import kr.or.ddit.board.dao.BoardDaoInf;
 import kr.or.ddit.board.service.BoardServiceImpl;
 import kr.or.ddit.board.service.BoardServiceInf;
+import kr.or.ddit.file.dao.FileDaoImpl;
+import kr.or.ddit.file.dao.FileDaoInf;
+import kr.or.ddit.file.model.FileVO;
 
 public class FileServiceImpl implements FileServiceInf{
 	private static FileServiceInf service = new FileServiceImpl();
-	private BoardDaoInf dao;
+	private FileDaoInf dao;
 	
 	private FileServiceImpl(){
-		dao = BoardDaoImpl.getInstance();
+		dao = FileDaoImpl.getInstance();
 	}
 	
 	public static FileServiceInf getInstance() {
 		return service;
 	}
 	@Override
-	public int insetFile(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insetFile(FileVO vo) {
+		
+		return dao.insetFile(vo);
 	}
 
 }

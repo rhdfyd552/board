@@ -18,5 +18,10 @@ public interface BoardServiceInf {
 	public int deleteBoard(int board_seq);
 	
 	public Map<String, Object> selectNoticeBoard(Map<String, Integer> map);
-
+	
+	public int insertBoard(BoardVO vo);
+	
+	public int insertReplyBoard(BoardVO vo);
+	
+	public int boardCount();
 }

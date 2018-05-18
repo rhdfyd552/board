@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.Map;
 
 import kr.or.ddit.board.dao.BoardDaoInf;
+import kr.or.ddit.file.model.FileVO;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -32,9 +33,9 @@ public class FileDaoImpl implements FileDaoInf{
 	}
 	
 	@Override
-	public int insetFile(Map<String, Object> map) {
+	public int insetFile(FileVO vo) {
 		session = sqlSessionFactory.openSession();
-		int cnt = session.insert("files.insertFile",map.get("fileList"));
+		int cnt = session.insert("file.insertFile",vo);
 		session.commit();
 		session.close();
 		return cnt;

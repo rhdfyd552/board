@@ -1,8 +1,9 @@
 package kr.or.ddit.file.service;
 
-import java.util.Map;
+
+import kr.or.ddit.file.model.FileVO;
 
 public interface FileServiceInf {
-	public int insetFile(Map<String, Object>map);
+	public int insetFile(FileVO vo);
 
 }

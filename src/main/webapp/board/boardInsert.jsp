@@ -54,8 +54,7 @@ $(document).ready(function() {
 		if(confirm("저장하시겠습니까?")) {
 			// id가 smarteditor인 textarea에 에디터에서 대입
 			oEditors.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
-			$('#tatle').attr($('#tatle').text());
-			
+
 			// 이부분에 에디터 validation 검증
 			if(validation()) {
 				$("#frm").submit();
@@ -91,9 +90,7 @@ function validation(){
 		oEditors.getById['smarteditor'].exec('FOCUS');
 		return false;
 	}
-	if($('#title').val()==null||$('#title').val()==''){
-		return false;
-	}
+
 	return true;
 }
 
@@ -118,24 +115,28 @@ function validation(){
 			<div class="container-fluid">
 		<div class="row">
 
-		<form action="${pageContext.request.contextPath }/replyBoard"  method="post" id="frm" enctype="multipart/form-data">
+		<form action="${pageContext.request.contextPath }/insertBoard"  method="post" id="frm" enctype="multipart/form-data">
 			<div class="form-group">
-				<label class="col-sm-2 control-label">게시판</label>
-					<input type="text" id="category_seq" value="${no_name }" readonly>
+				<label class="col-sm-2 control-label">게시판 선택</label>
+					<select name="notices">
+						<c:forEach items="${notice}" var="notice">
+							<option value="${notice.no_seq }">${notice.no_name }</option>
+						</c:forEach>
+					</select>
 			</div>	
-			<input type="hidden" name="board_seq" value="${board_seq }">
+			<input type="hidden" name="reg_id" value="${mem_id }">
 			<div class="form-group">
 				<label class="col-sm-1 control-label">제목</label>
-				<input type="text" id="title" name="title">
+				<input type="text" id="title" name="title" value="${boardVO.title }">
 			</div>
 			<div>
 				<label class="col-sm-1 cotrol-label">첨부파일</label>
-				<input type="file" class="multi" id="file" name="file" maxlength="5">
+				<input type="file" class="multi"id="file" name="file" maxlength="5">
 			</div>	
 			<textarea name="content" id="smarteditor" rows="10" cols="100" style="width:766px; height:412px;">
-				
+				${boardVO.content }
 			</textarea> 
-			<input type="button" id="savebutton" value="답글입력" />
+			<input type="button" id="savebutton" value="글등록" />
 		</form>
 		</div>
 	</div>

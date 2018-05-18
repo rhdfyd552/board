@@ -54,4 +54,28 @@
   	<update id="deleteBoard" parameterType="int">
   		update board set del_yn = 'Y' where board_seq = #{board_seq}
   	</update>
+ 
+  	
+  	<insert id="insertBoard" parameterType="boardVO">
+  		<selectKey keyProperty="board_seq" resultType="int" order="BEFORE">
+  			select bo_seq.nextval from DUAL
+  		</selectKey>
+  		insert into board
+  		(board_seq, pboard_seq, category_seq,
+  		 group_seq, title, content,
+  		 reg_id, reg_dt, del_yn)
+  		 values
+  		 (#{board_seq}, '', #{category_seq},
+  		  #{board_seq},#{title}, #{content},
+  		   #{reg_id}, sysdate, 'N')
+  		
+  	</insert>
+  	
+  	<insert id="insertReplyBoard" parameterType="boardVO">
+  		insert into board values (BO_SEQ.nextval, #{pboard_seq}, #{category_seq}, #{group_seq},#{title}, #{content}, #{reg_id}, sysdate, 'N')
+  	</insert>
+  	
+  	<select id="count" resultType="int">
+  		select COUNT(*) from board
+  	</select>
   </mapper>

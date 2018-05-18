@@ -71,7 +71,7 @@ public class BoardVO {
 		return "BoardVO [board_seq=" + board_seq + ", pboard_seq=" + pboard_seq
 				+ ", category_seq=" + category_seq + ", group_seq=" + group_seq
 				+ ", title=" + title + ", content=" + content + ", reg_id="
-				+ reg_id + ", reg_dt=" + reg_dt + ", del_yn=" + del_yn + "]";
+				+ reg_id + ", reg_dt=" + reg_dt + ", del_yn=" + del_yn + "\n<br>]";
 	}
 	
 	

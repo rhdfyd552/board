@@ -53,11 +53,11 @@ public class BoardServiceImplTest {
 		vo.setContent("수정");
 		vo.setBoard_seq(1);
 		
-		int cnt = service.boardModify(vo);
+		//int cnt = service.boardModify(vo);
 		
 		BoardVO result = service.getBoard(1);
 		/***Then***/
-		assertEquals(1, cnt);
+		//assertEquals(1, cnt);
 		assertEquals("수정 완료", result.getTitle());
 
 	}
@@ -78,4 +78,27 @@ public class BoardServiceImplTest {
 		assertNotNull(list);
 		assertEquals(2, list.size());
 	}
+	
+	@Test
+	public void insertReplyBoardTest(){
+		
+		/***Given***/
+		
+
+		/***When***/
+		BoardVO vo = new BoardVO();
+		//(BO_SEQ.nextval, 5, 2, 2,'2번 게시판 11번글은 5번글의 답글입니다', '10번 내용입니다', 'brown', sysdate, 'N');
+		vo.setPboard_seq(5);
+		vo.setCategory_seq(2);
+		vo.setGroup_seq(2);
+		vo.setTitle("serviceTest");
+		vo.setContent("test");
+		vo.setReg_id("sally");
+		
+		int cnt = service.insertReplyBoard(vo);
+		/***Then***/
+		assertEquals(1, cnt);
+	}
+	
+	
 }

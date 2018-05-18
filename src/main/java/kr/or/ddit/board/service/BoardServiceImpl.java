@@ -114,6 +114,24 @@ public class BoardServiceImpl implements BoardServiceInf{
 		return pageNav.toString();
 	}
 
+	@Override
+	public int insertBoard(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return dao.insertBoard(vo);
+	}
+
+	@Override
+	public int insertReplyBoard(BoardVO vo) {
+		
+		return dao.insertReplyBoard(vo);
+	}
+
+	@Override
+	public int boardCount() {
+		
+		return dao.boardCount();
+	}
+
 
 
 }

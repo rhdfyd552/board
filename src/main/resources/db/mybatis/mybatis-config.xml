@@ -9,6 +9,7 @@
 	<typeAlias alias="memberVO" type="kr.or.ddit.member.model.MemberVO"/>
 	<typeAlias alias="boardVO" type="kr.or.ddit.board.model.BoardVO"/>
 	<typeAlias alias="noticeVO" type="kr.or.ddit.notice.model.NoticeVO"/>
+	<typeAlias alias="fileVO" type="kr.or.ddit.file.model.FileVO"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -25,5 +26,6 @@
     <mapper resource="db/mybatis/sqlmap/member.xml"/>
     <mapper resource="db/mybatis/sqlmap/board.xml"/>
     <mapper resource="db/mybatis/sqlmap/notice.xml"/>
+    <mapper resource="db/mybatis/sqlmap/file.xml"/>
   </mappers>
 </configuration>

@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.or.ddit.board.model.BoardVO;
+import kr.or.ddit.file.model.FileVO;
 
 public class BoardDaoImpl implements BoardDaoInf{
 	
@@ -69,7 +70,7 @@ public class BoardDaoImpl implements BoardDaoInf{
 	@Override
 	public int boardModify(Map<String, Object>map) {
 		session = sqlSessionFactory.openSession();
-		int cnt = session.update("board.boardModify",map);
+		int cnt = session.update("board.boardModify",map.get("boardVO"));
 		session.commit();
 		session.close();
 		return cnt;
@@ -90,6 +91,34 @@ public class BoardDaoImpl implements BoardDaoInf{
 		List<BoardVO> selectBoard = session.selectList("board.selectNoticeBoard",map);
 		session.close();
 		return selectBoard;
+	}
+
+	@Override
+	public int insertBoard(BoardVO vo) {
+		session = sqlSessionFactory.openSession();
+		int cnt = session.insert("board.insertBoard",vo);
+		session.commit();
+		session.close();
+		
+		return cnt;
+	}
+	
+	@Override
+	public int insertReplyBoard(BoardVO vo) {
+		session = sqlSessionFactory.openSession();
+		int cnt = session.insert("board.insertReplyBoard",vo);
+		session.commit();
+		session.close();
+		
+		return cnt;
+	}
+
+	@Override
+	public int boardCount() {
+		session = sqlSessionFactory.openSession();
+		int cnt = session.selectOne("board.count");
+		session.close();
+		return cnt;
 	}
 	
 }

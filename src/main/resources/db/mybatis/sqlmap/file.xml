@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="file">
+  	<select id="selectFile" resultType="fileVO" parameterType="int">
+  		select * from files where FI_BOARD_SEQ = 
+  	</select> 
+
+  	<insert id="insertFile" parameterType="fileVO">
+  		insert into files values (fi_seq.nextval, #{fi_board_seq}, #{fi_path}, #{fi_name})
+  	</insert>
+  	
+  	<delete id="deleteNotice" parameterType="int">
+  		delete from files where fi_board_seq=#{fi_board_seq}
+  	</delete>
+  </mapper>

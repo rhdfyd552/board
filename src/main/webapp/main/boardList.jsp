@@ -56,7 +56,8 @@
     				
     		})
     		$('#boardReg').click(function(){
-    			document.location = "${pageContext.request.contextPath }/board/boardForm.jsp";
+    			$('#frm').attr('action','${pageContext.request.contextPath }/insertBoard');
+    			$('#frm').submit();
     		})
     	})
     </script>
@@ -71,7 +72,7 @@
   <body>
 
     <%@ include file="/layout/header.jsp" %>
-  <form id="frm" action="${pageContext.request.contextPath }/getBoard" method="get">
+  <form id="frm">
   	<input type="hidden" name="board_seq" id="board_seq">
   	<input type="hidden" name="category_seq" id="category_seq">
   </form>
@@ -114,7 +115,7 @@
 					</table>
 				</div>
 				
-				<button id="boardReg" type="submit" class="btn btn-default">게시글 쓰기</button>
+				<button id="boardReg" type="button" class="btn btn-default">게시글 쓰기</button>
 				${pageNav }
 				
 			</div>
